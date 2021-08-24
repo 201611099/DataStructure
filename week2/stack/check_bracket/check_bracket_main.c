@@ -6,7 +6,7 @@ int main(void)
 {
 	char	*str1 = "( ( A + B ) / C ) - { ( D + E ) && ( F - G ) }";
 	char	*str2 = "( ( A + B ) / C  - { ( D + E ) && ( F - G ) ) }";
-	char	*str3 = "(((()(){()()})))";
+	char	*str3 = "(((()(){()()}";
 	t_bool	bool;
 
 	bool = checkBracketMatching(str1);
@@ -26,6 +26,6 @@ int main(void)
 		printf("'%s' is matched.\n", str3);
 	else
 		printf("'%s' is unmatched\n", str3);
-		
+	//while (1);
 	return (0);
 }

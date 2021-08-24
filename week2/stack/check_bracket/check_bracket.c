@@ -9,14 +9,14 @@ static t_bool	checkMatching(LinkedList *stack, int bracket)
 		deleteLinkedList(stack);
 		return (FALSE);
 	}
-	top = peek_list(stack);
+	top = pop_list(stack);
 	if (!top || top->data != bracket)
 	{
-		pop_list(stack);
+		free(top);
 		deleteLinkedList(stack);
 		return (FALSE);
 	}
-	pop_list(stack);
+	free(top);
 	return (TRUE);
 }
 
@@ -54,6 +54,11 @@ t_bool	checkBracketMatching(char *exp)
 			break;
 		}
 		idx++;
+	}
+	if (stack->currentElementCount)
+	{
+		deleteLinkedList(stack);
+		return (FALSE);
 	}
 	deleteLinkedList(stack);
 	return (TRUE);
