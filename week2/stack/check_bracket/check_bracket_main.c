@@ -10,18 +10,22 @@ int main(void)
 	t_bool	bool;
 
 	bool = checkBracketMatching(str1);
-	if (bool)
+	if (bool == TRUE)
 		printf("'%s' is matched.\n", str1);
 	else
 		printf("'%s' is unmatched\n", str1);
+
 	bool = checkBracketMatching(str2);
-	if (bool)
+	if (bool == TRUE)
 		printf("'%s' is matched.\n", str2);
 	else
 		printf("'%s' is unmatched\n", str2);
+
 	bool = checkBracketMatching(str3);
-	if (bool)
+	if (bool == TRUE)
 		printf("'%s' is matched.\n", str3);
 	else
 		printf("'%s' is unmatched\n", str3);
+		
+	return (0);
 }

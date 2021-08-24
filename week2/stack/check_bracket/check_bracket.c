@@ -10,12 +10,13 @@ static t_bool	checkMatching(LinkedList *stack, int bracket)
 		return (FALSE);
 	}
 	top = peek_list(stack);
-	pop_list(stack);
 	if (!top || top->data != bracket)
 	{
+		pop_list(stack);
 		deleteLinkedList(stack);
 		return (FALSE);
 	}
+	pop_list(stack);
 	return (TRUE);
 }
 
