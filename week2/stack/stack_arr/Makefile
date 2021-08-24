@@ -1,10 +1,10 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
-INC = ../../week1/arr_mentor
+INC = ../../../week1/arr_mentor
 NAME = stack_arr
 MAKE = make
 ARR_NAME = arr.a
-ARR_DIR = ../../week1/arr_mentor
+ARR_DIR = ../../../week1/arr_mentor
 SRCS = stack_arr.c \
 		stack_arr_main.c
 OBJS = $(SRCS:.c=.o)
@@ -17,12 +17,12 @@ $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -I$(INC) -o $(NAME) $(OBJS) $(ARR_NAME)
 
 clean:
-	$(MAKE) clean -C $(ARR_DIR)/
-	rm -f $(OBJS)
+	@$(MAKE) clean -C $(ARR_DIR)/
+	@rm -f $(OBJS)
 
 fclean: clean
-	$(MAKE) fclean -C $(ARR_DIR)/
-	rm -f $(NAME) $(ARR_NAME)
+	@$(MAKE) fclean -C $(ARR_DIR)/
+	@rm -f $(NAME) $(ARR_NAME)
 
 re: fclean all
 

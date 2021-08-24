@@ -8,6 +8,7 @@ int	main(void)
 	ListNode	*node3;
 	ListNode	*node4;
 	ListNode	*node5;
+	ListNode	*node6;
 
 	lst = createLinkedList();
 	if (!lst)
@@ -21,8 +22,18 @@ int	main(void)
 	addLLElement(lst, lst->currentElementCount, node2);
 	addLLElement(lst, lst->currentElementCount, node3);
 	addLLElement(lst, lst->currentElementCount, node4);
-	addLLElement(lst, lst->currentElementCount,	node5);
+	addLLElement(lst, lst->currentElementCount, node5);
 	printf("\n----------print list----------\n");
+	printLinkedList(lst);
+
+	printf("\nposition %d: %d\n", 2, getLLElement(lst, 2)->data);
+	printf("\nposition %d: %d\n", 0, getLLElement(lst, 0)->data);
+	printf("\nposition %d: %d\n", 4, getLLElement(lst, 4)->data);
+	printf("\nLength %d\n", getLinkedListLength(lst));
+
+	node6 = createListNode(0);
+	addLLElement(lst, 0, node6);
+	printf("\n----------insert index 1 -> 0 list----------\n");
 	printLinkedList(lst);
 
 	printf("\nposition %d: %d\n", 2, getLLElement(lst, 2)->data);

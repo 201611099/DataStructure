@@ -33,7 +33,7 @@ t_bool	addLLElement(LinkedList *pList, int position, ListNode *element)
 	if (!pList->currentElementCount || !position)
 	{
 		if (!position && pList->currentElementCount)
-			element->pLink = pList->headerNode->pLink;
+			element->pLink = pList->headerNode;
 		pList->headerNode = element;
 		pList->currentElementCount++;
 		return (TRUE);
