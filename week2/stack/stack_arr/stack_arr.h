@@ -5,8 +5,8 @@
 
 # include "../../../week1/arr_mentor/array.h"
 
-void			push_arr(ArrayList *arr, ArrayListNode data);
-void			pop_arr(ArrayList *arr);
-ArrayListNode	peek_arr(ArrayList *arr);
+t_bool	push_arr(ArrayList *arr, ArrayListNode data);
+int		pop_arr(ArrayList *arr);
+int		peek_arr(ArrayList *arr);
 
 #endif

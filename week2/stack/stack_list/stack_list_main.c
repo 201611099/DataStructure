@@ -29,7 +29,9 @@ int	main(void)
 	printLinkedList(stack);
 	printf("stack top: %d\n", peek_list(stack)->data);
 
-	pop_list(stack);
+	node1 = pop_list(stack);
+	printf("stack pop: %d\n", node1->data);
+	free(node1);
 	printf("\n-----------stack after pop(top->bottom)---------\n");
 	printLinkedList(stack);
 	printf("stack top: %d\n", peek_list(stack)->data);
@@ -40,14 +42,29 @@ int	main(void)
 	printLinkedList(stack);
 	printf("stack top: %d\n", peek_list(stack)->data);
 
-	pop_list(stack);
-	pop_list(stack);
-	pop_list(stack);
-	pop_list(stack);
-	pop_list(stack);
+	node1 = pop_list(stack);
+	printf("stack pop: %d\n", node1->data);
+	free(node1);
+	node1 = pop_list(stack);
+	printf("stack pop: %d\n", node1->data);
+	free(node1);
+	node1 = pop_list(stack);
+	printf("stack pop: %d\n", node1->data);
+	free(node1);
+	node1 = pop_list(stack);
+	printf("stack pop: %d\n", node1->data);
+	free(node1);
+	node1 = pop_list(stack);
+	printf("stack pop: %d\n", node1->data);
+	free(node1);
 	printf("\n-----------stack after pop * 5(=> Empty stack)---------\n");
 	printLinkedList(stack);
-	pop_list(stack);
+	node1 = pop_list(stack);
+	if (!node1)
+		printf("stack pop error: empty stack\n");
+	else
+		printf("stack pop: %d\n", node1->data);
 	deleteLinkedList(stack);
+	//while (1);
 	return (0);
 }

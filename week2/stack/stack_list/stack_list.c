@@ -1,28 +1,28 @@
 #include "stack_list.h"
 
-void  push_list(LinkedList *list, ListNode *data)
+t_bool	push_list(LinkedList *list, ListNode *data)
 {
 	if (!list)
 	{
 		printf("stack doesn't exist.\n");
-		return ;
+		return (FALSE);
 	}
-	addLLElement(list, 0, data);
+	return (addLLElement(list, 0, data));
 }
 
-void  pop_list(LinkedList *list)
+ListNode	*pop_list(LinkedList *list)
 {
+	ListNode	*cur;
+
 	if (!list)
-	{
-		printf("stack doesn't exist.\n");
-		return ;
-	}
+		return (0);
 	if (list->currentElementCount == 0)
-	{
-		printf("pop: Empty stack(Underflow)\n");
-		return ;
-	}
-	removeLLElement(list, 0);
+		return (0);
+	cur = list->headerNode;
+	list->headerNode = cur->pLink;
+	cur->pLink = 0;
+	list->currentElementCount--;
+	return (cur);
 }
 
 ListNode	*peek_list(LinkedList *list)
