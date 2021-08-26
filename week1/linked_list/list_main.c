@@ -26,9 +26,9 @@ int	main(void)
 	printf("\n----------print list----------\n");
 	printLinkedList(lst);
 
-	printf("\nposition %d: %d\n", 2, getLLElement(lst, 2)->data);
-	printf("\nposition %d: %d\n", 0, getLLElement(lst, 0)->data);
-	printf("\nposition %d: %d\n", 4, getLLElement(lst, 4)->data);
+	printf("\nposition %d: %d\n", 2, getLLElement(lst, 2));
+	printf("\nposition %d: %d\n", 0, getLLElement(lst, 0));
+	printf("\nposition %d: %d\n", 4, getLLElement(lst, 4));
 	printf("\nLength %d\n", getLinkedListLength(lst));
 
 	node6 = createListNode(0);
@@ -36,9 +36,9 @@ int	main(void)
 	printf("\n----------insert index 1 -> 0 list----------\n");
 	printLinkedList(lst);
 
-	printf("\nposition %d: %d\n", 2, getLLElement(lst, 2)->data);
-	printf("\nposition %d: %d\n", 0, getLLElement(lst, 0)->data);
-	printf("\nposition %d: %d\n", 4, getLLElement(lst, 4)->data);
+	printf("\nposition %d: %d\n", 2, getLLElement(lst, 2));
+	printf("\nposition %d: %d\n", 0, getLLElement(lst, 0));
+	printf("\nposition %d: %d\n", 4, getLLElement(lst, 4));
 	printf("\nLength %d\n", getLinkedListLength(lst));
 
 	removeLLElement(lst, 0);

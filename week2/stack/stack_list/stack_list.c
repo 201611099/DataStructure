@@ -1,31 +1,39 @@
 #include "stack_list.h"
 
-t_bool	push_list(LinkedList *list, ListNode *data)
+t_bool	push_list(LinkedList *list, t_data data)
 {
+	ListNode	*new;
 	if (!list)
 	{
 		printf("stack doesn't exist.\n");
 		return (FALSE);
 	}
-	return (addLLElement(list, 0, data));
+	new = createListNode(data);
+	if (!new)
+		return (FALSE);
+	return (addLLElement(list, 0, new));
 }
 
-ListNode	*pop_list(LinkedList *list)
+t_data	pop_list(LinkedList *list)
 {
-	ListNode	*cur;
+	t_data	cur;
 
 	if (!list)
+	{
+		printf("stack doesn't exist.\n");
 		return (0);
+	}
 	if (list->currentElementCount == 0)
+	{
+		printf("pop_error: Empty stack\n");
 		return (0);
-	cur = list->headerNode;
-	list->headerNode = cur->pLink;
-	cur->pLink = 0;
-	list->currentElementCount--;
+	}
+	cur = getLLElement(list, 0);
+	removeLLElement(list, 0);
 	return (cur);
 }
 
-ListNode	*peek_list(LinkedList *list)
+t_data	peek_list(LinkedList *list)
 {
 	if (!list)
 	{
@@ -34,8 +42,8 @@ ListNode	*peek_list(LinkedList *list)
 	}
 	if (list->currentElementCount == 0)
 	{
-		printf("peek: Empty stack\n");
+		printf("peek_error: Empty stack\n");
 		return (0);
 	}
-	return (list->headerNode);
+	return (getLLElement(list, 0));
 }

@@ -3,9 +3,11 @@
 
 # include "../utils/utils.h"
 
+typedef int	t_data;
+
 typedef struct	ListNodeType
 {
-	int					data;
+	t_data				data; //int -> t_data
 	struct ListNodeType	*pLink;
 }	ListNode;
 
@@ -16,10 +18,10 @@ typedef struct	LinkedListType
 }	LinkedList;
 
 LinkedList	*createLinkedList(void);
-ListNode	*createListNode(int data);
+ListNode	*createListNode(t_data data);
 t_bool		addLLElement(LinkedList *pList, int position, ListNode *element);
 t_bool		removeLLElement(LinkedList *pList, int position);
-ListNode	*getLLElement(LinkedList *pList, int position);
+t_data		getLLElement(LinkedList *pList, int position);
 
 void		clearLinkedList(LinkedList *pList);
 int			getLinkedListLength(LinkedList *pList);

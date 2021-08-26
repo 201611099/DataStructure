@@ -76,7 +76,7 @@ t_bool	removeLLElement(LinkedList *pList, int position)
 	return (TRUE);
 }
 
-ListNode	*getLLElement(LinkedList *pList, int position)
+t_data	getLLElement(LinkedList *pList, int position)
 {
 	ListNode	*ret;
 
@@ -85,7 +85,7 @@ ListNode	*getLLElement(LinkedList *pList, int position)
 	ret = pList->headerNode;
 	for (int i = 0; i < position; i++)
 		ret = ret->pLink;
-	return (ret);
+	return (ret->data);
 }
 
 void	clearLinkedList(LinkedList *pList)
