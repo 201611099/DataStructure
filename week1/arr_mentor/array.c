@@ -39,6 +39,8 @@ t_bool	addALElement(ArrayList *pList, int position, ArrayListNode element) //배
 
 	if (!pList)
 		return (FALSE);
+	if (position > pList->currentElementCount)
+		position = pList->currentElementCount;
 	if (position >= pList->maxElementCount)
 	{
 		tmp = realloc(pList->pElement, sizeof(ArrayListNode) * (position + 1));
@@ -47,11 +49,16 @@ t_bool	addALElement(ArrayList *pList, int position, ArrayListNode element) //배
 		pList->pElement = tmp;
 		pList->maxElementCount = position + 1;
 	}
+	if (isArrayListFull(pList))
+	{
+		pList->maxElementCount++;
+		tmp = realloc(pList->pElement, sizeof(ArrayListNode) * (pList->maxElementCount));
+		pList->pElement = tmp;
+	}
+	for (int i = pList->currentElementCount - 1; i >= position ; i--)
+		pList->pElement[i + 1] = pList->pElement[i];
 	pList->pElement[position] = element;
 	pList->currentElementCount++;
-	//pList->pElement += position;
-	//memcpy(pList->pElement, &element, sizeof(element));
-	//pList->pElement -= position;
 	return (TRUE);
 }
 
