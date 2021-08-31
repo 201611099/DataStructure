@@ -42,7 +42,7 @@ int main(void)
 	else
 		printf("Array is not full.\n");
 
-	printf("\narr[3] = %d\n", getALElement(arr, 3)->data);
+	printf("\narr[3] = %d\n", getALElement(arr, 3));
 
 	removeALElement(arr, 3);
 	removeALElement(arr, 1);

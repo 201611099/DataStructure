@@ -81,9 +81,9 @@ t_bool	removeALElement(ArrayList *pList, int position) //특정 인덱스 원소
 	return (TRUE);
 }
 
-ArrayListNode	*getALElement(ArrayList *pList, int position) //특정 인덱스 데이터 가져오기
+t_data	getALElement(ArrayList *pList, int position) //특정 인덱스 데이터 가져오기
 {
-	return (&(pList->pElement[position]));
+	return (pList->pElement[position].data);
 }
 
 void	displayArrayList(ArrayList *pList) //배열 원소 출력
