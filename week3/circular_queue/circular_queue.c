@@ -22,8 +22,6 @@ ArrayQueue *createArrayQueue(int maxElementCount)
 
 t_bool enqueue(ArrayQueue *queue, t_data data)
 {
-	ArrayQueueNode *new_node;
-
 	if (is_full(queue) == TRUE)
 		return (FALSE);
 	if (is_empty(queue) == FALSE)
