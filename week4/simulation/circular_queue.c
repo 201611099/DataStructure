@@ -26,7 +26,8 @@ t_bool enqueue(ArrayQueue *queue, t_data data)
 		return (FALSE);
 	if (is_empty(queue) == FALSE)
 		queue->rear = (queue->rear + 1) % queue->maxElementCount;
-	memcpy(queue->pElement[queue->rear].element, data, sizeof(t_data));
+	//memcpy(&queue->pElement[queue->rear].element, &data, sizeof(t_data));
+	queue->pElement[queue->rear].element = data;
 	queue->currentElementCount++;
 	return (TRUE);
 }
@@ -49,7 +50,7 @@ t_data dequeue(ArrayQueue *queue)
 	ret = peek(queue);
 	if (is_empty(queue))
 		return (ret);
-	queue->pElement[queue->front].element = 0;
+	bzero(&(queue->pElement[queue->front].element), sizeof(t_data));
 	queue->front = (queue->front + 1) % queue->maxElementCount;
 	if (queue->currentElementCount == 1)
 		queue->rear = (queue->rear + 1) % queue->maxElementCount;
@@ -71,14 +72,14 @@ t_bool is_full(ArrayQueue *queue)
 	return (FALSE);
 }
 
-void	display_queue(ArrayQueue *queue)
-{
-	printf("----------Queue----------\n"); 
-	for (int i = 0; i < queue->currentElementCount; i++)
-		printf("queue[%d] = %c\n", (queue->front + i) % queue->maxElementCount, queue->pElement[(queue->front + i) % queue->maxElementCount].element);
-	printf("Front: %d %c\n", queue->front, queue->pElement[queue->front].element);
-	printf("rear: %d %c\n", queue->rear, queue->pElement[queue->rear].element);
-}
+//void	display_queue(ArrayQueue *queue)
+//{
+//	printf("----------Queue----------\n"); 
+//	for (int i = 0; i < queue->currentElementCount; i++)
+//		printf("queue[%d] = %c\n", (queue->front + i) % queue->maxElementCount, queue->pElement[(queue->front + i) % queue->maxElementCount].element);
+//	printf("Front: %d %c\n", queue->front, queue->pElement[queue->front].element);
+//	printf("rear: %d %c\n", queue->rear, queue->pElement[queue->rear].element);
+//}
 
 void	clear_queue(ArrayQueue *queue)
 {

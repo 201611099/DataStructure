@@ -18,11 +18,13 @@ int	main(void)
 	node3 = createListNode(30);
 	node4 = createListNode(-40);
 	node5 = createListNode(50);
+	node6 = createListNode(60);
 	addLLElement(lst, lst->currentElementCount, node1);
 	addLLElement(lst, lst->currentElementCount, node2);
 	addLLElement(lst, lst->currentElementCount, node3);
 	addLLElement(lst, lst->currentElementCount, node4);
-	addLLElement(lst, lst->currentElementCount, node5);
+	addLLElementLast(lst, node6);
+	addLLElement(lst, 0, node5);
 	printf("\n----------print list----------\n");
 	printLinkedList(lst);
 

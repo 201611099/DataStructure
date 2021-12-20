@@ -1,4 +1,4 @@
-#include "list.h"
+#include "./list.h"
 
 LinkedList	*createLinkedList(void)
 {
@@ -11,13 +11,14 @@ LinkedList	*createLinkedList(void)
 	return (lst);
 }
 
-ListNode	*createListNode(int data)
+ListNode	*createListNode(int data, t_data weight)
 {
 	ListNode	*node;
 	node = (ListNode *)malloc(sizeof(ListNode));
 	if (!node)
 		return (0);
 	bzero(node, sizeof(ListNode));
+	node->weight = weight;
 	node->data = data;
 	return (node);
 }
@@ -27,16 +28,16 @@ t_bool	addLLElement(LinkedList *pList, int position, ListNode *element)
 	ListNode	*cur;
 
 	if (!pList)
-		return (FALSE);
+		return (T_FALSE);
 	if (pList->currentElementCount < position) //position을 인덱스로 생각(0부터 시작)
-		return (FALSE);
+		return (T_FALSE);
 	if (!pList->currentElementCount || !position)
 	{
 		if (!position && pList->currentElementCount)
 			element->pLink = pList->headerNode;
 		pList->headerNode = element;
 		pList->currentElementCount++;
-		return (TRUE);
+		return (T_TRUE);
 	}
 	cur = pList->headerNode;
 	for (int i = 1; i < position; i++)
@@ -44,29 +45,29 @@ t_bool	addLLElement(LinkedList *pList, int position, ListNode *element)
 	element->pLink = cur->pLink;
 	cur->pLink = element;
 	pList->currentElementCount++;
-	return (TRUE);
+	return (T_TRUE);
 }
 
-t_bool	addLLElementLast(LinkedList *pList, ListNode *element)
+t_bool		addLLElementLast(LinkedList *pList, ListNode *element)
 {
 	ListNode *cur;
 
 	if (!pList || !element)
 	{
 		printf("invalid input");
-		return (FALSE);
+		return (T_FALSE);
 	}
 	cur = pList->headerNode;
 	pList->currentElementCount++;
 	if (cur == NULL)
 	{
 		pList->headerNode = element;
-		return (TRUE);
+		return T_TRUE;
 	}
 	while (cur->pLink)
 		cur = cur->pLink;
 	cur->pLink = element;
-	return (TRUE);
+	return (T_TRUE);
 }
 
 t_bool	removeLLElement(LinkedList *pList, int position)
@@ -75,9 +76,9 @@ t_bool	removeLLElement(LinkedList *pList, int position)
 	ListNode	*next;
 
 	if (!pList || !(pList->currentElementCount))
-		return (FALSE);
+		return (T_FALSE);
 	if (position >= pList->currentElementCount)
-		return (FALSE);
+		return (T_FALSE);
 	cur = pList->headerNode;
 	if (!position)
 	{
@@ -85,7 +86,7 @@ t_bool	removeLLElement(LinkedList *pList, int position)
 		cur->pLink = 0;
 		free(cur);
 		pList->currentElementCount--;
-		return (TRUE);
+		return (T_TRUE);
 	}
 	for (int i = 0; i < position - 1; i++)
 		cur = cur->pLink;
@@ -95,7 +96,7 @@ t_bool	removeLLElement(LinkedList *pList, int position)
 	free(cur->pLink);
 	cur->pLink = next;
 	pList->currentElementCount--;
-	return (TRUE);
+	return (T_TRUE);
 }
 
 t_data	getLLElement(LinkedList *pList, int position)
